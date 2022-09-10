@@ -26,7 +26,7 @@ module.exports = {
                     let created_at = student[st][element].created_at
                     let user_id = student[st][element].user_id
 
-                    req = (`INSERT INTO webhook SET nom = ${db.escape(name)}, prefix = ${db.escape(prefix)}, iconURL = ${db.escape(avatar_url).trim()}, date=${db.escape(date.format(new Date(created_at), 'YYYY-MM-DD HH:mm:ss'))}, discordid=${db.escape(user_id)};`)
+                    req = (`INSERT INTO HeroicAcademy SET nom = ${db.escape(name)}, prefix = ${db.escape(prefix)}, iconURL = ${db.escape(avatar_url).trim()}, date=${db.escape(date.format(new Date(created_at), 'YYYY-MM-DD HH:mm:ss'))}, discordid=${db.escape(user_id)};`)
 
                     await interaction.channel.send(req)
             }
