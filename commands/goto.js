@@ -20,7 +20,7 @@ module.exports = {
             { name: 'Bâtiment principal', value: 'bat' },
             { name: 'Forêt', value: 'foret' },
             { name: 'Ville', value: 'ville' },
-            { name: 'Futur Apocalyptique', value: 'futur' },
+            { name: 'Terre inconnue', value: 'terre' },
         ]
     }],
     helpType: "moderation",
@@ -49,7 +49,7 @@ module.exports = {
             case 'ville':
                 chosenChannelFullName = "la ville"
                 break;
-            case 'unknown':
+            case 'terre':
                 chosenChannelFullName = "la terre inconnue"
                 break;
 
