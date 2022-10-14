@@ -8,7 +8,7 @@ const config = {
         "Bâtiment principal": "1003700025056034856",
         "Forêt": "1003708077830324244",
         "Ville": "1003710024981434439",
-        "Terre Inconnue": "1007330194786357389"
+        "Terre Inconnue": "1007332131158102079"
       },
       roles: {
         "Catégorie": "1005525501324054548",
