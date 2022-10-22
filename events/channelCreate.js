@@ -14,7 +14,7 @@ module.exports = {
         let description = ""
 
         for (categoryID in config.zones.categories) {
-            description = description + '\n\n' + client.channels.cache.get(config.zones.categories[categoryID ]).name + '\n'
+            description = description + '\n\n' + client.channels.cache.get(config.zones.categories[categoryID]).name + '\n'
             client.channels.cache.get(config.zones.categories[categoryID]).children.map(c => c).sort((a, b) => a.rawPosition - b.rawPosition).forEach(channel => {
                 description = description + '\n<#' + channel.id + '>'
             })

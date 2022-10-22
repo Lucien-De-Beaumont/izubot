@@ -21,6 +21,7 @@ module.exports = {
             { name: 'Forêt', value: 'foret' },
             { name: 'Ville', value: 'ville' },
             { name: 'Terre inconnue', value: 'terre' },
+            { name: 'Montag,e', value: 'mountain' },
         ]
     }],
     helpType: "moderation",
@@ -51,6 +52,9 @@ module.exports = {
                 break;
             case 'terre':
                 chosenChannelFullName = "la terre inconnue"
+                break;
+            case 'mountain':
+                chosenChannelFullName = "la montagne"
                 break;
 
         }
