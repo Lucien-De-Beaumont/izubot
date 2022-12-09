@@ -190,7 +190,7 @@ module.exports = {
                 emoji = nowRP.embeds[0].description.slice(nowRP.embeds[0].description.length - 2)
                 embed.setDescription(date.format(new Date(new Date(nowRP.embeds[0].description.slice(0, 19)).setSeconds(new Date(nowRP.embeds[0].description.slice(0, 19)).getSeconds() + 20)), 'YYYY-MM-DD HH:mm:ss') + '\n' + emoji)
             }
-            // embed.setDescription(date.format(new Date(1661983200000), 'YYYY-MM-DD HH:mm:ss') + '\n☀️')
+            // embed.setDescription(date.format(new Date(1665030660000), 'YYYY-MM-DD HH:mm:ss') + '\n🌦️')
             nowRP.edit({ embeds: [embed] })
 
             let minute = new Date(new Date(nowRP.embeds[0].description.slice(0, 19)).setSeconds(new Date(nowRP.embeds[0].description.slice(0, 19)).getSeconds() + 20)).getMinutes()

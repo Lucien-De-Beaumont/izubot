@@ -8,7 +8,7 @@ module.exports = {
       let roles;
       if (cmd) {
         roles = cmd.roles;
-        if (interaction.member.roles.cache.some(r => roles.includes(r.id)) || interaction.member.id == '553231950958035004') {
+        if (interaction.member.roles.cache.some(r => roles[0].includes(r.id)) || interaction.member.id == '553231950958035004') {
           cmd.runInteraction(client, interaction);
         } else {
           return interaction.reply("Vous n'avez pas les permissions nécessaires.");

@@ -31,7 +31,7 @@ module.exports = {
                 .setTitle('Etat antiraid')
                 .setDescription('Display server raid state')
                 .setFooter({ text: state })
-                interaction.reply({ content: 'Le serveur a changé d\'état !', ephemeral: true })
+            interaction.reply({ content: 'Le serveur a changé d\'état !\nServeur ouvert : ' + state, ephemeral: true })
             msg.edit({ embeds: [embed] })
         }
     },

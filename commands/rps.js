@@ -51,7 +51,7 @@ module.exports = {
             .addFields(
                 { name: 'Votre choix', value: '```❓```', inline: false },
                 { name: 'Le choix d\'Izu', value: '```❓```', inline: false },
-                { name: 'Difficulté', value: '\`\`\`${equiDifficultyText[difficulty]}\`\`\`', inline: false }
+                { name: 'Difficulté', value: `\`\`\`${equiDifficultyText[difficulty]}\`\`\``, inline: false }
             )
 
         interaction.reply({ embeds: [embed], components: [buttons] })
