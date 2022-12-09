@@ -28,6 +28,7 @@ module.exports = {
         break;
       }
     }
+    
     let webhooks = await message.channel.fetchWebhooks()
     let webhook = webhooks.find(wh => wh.owner.id == client.user.id)
 
