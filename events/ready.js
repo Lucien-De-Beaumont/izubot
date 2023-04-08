@@ -6,19 +6,16 @@ const date = require('date-and-time');
 const { createCanvas, loadImage } = require('canvas')
 const canvas = createCanvas(600, 611)
 const ctx = canvas.getContext('2d')
-
 module.exports = {
     name: "ready",
     once: true,
     async execute(client) {
         Logger.client('Je suis ON!')
-        // console.log(client.slashCommands.map(cmd => cmd))
+        // client.guilds.cache.get('1002135735241023548').commands.set([]);
+        client.guilds.cache.get('1002135735241023548').commands.set(client.slashCommands.map(cmd => cmd));
 
-        client.guilds.cache.get('1002135735241023548').commands.set([]);
-        // client.guilds.cache.get('1002135735241023548').commands.set(client.slashCommands.map(cmd => cmd));
-
-        // client.application.commands.set([]);
-        client.application.commands.set(client.slashCommands.map(cmd => cmd));
+        client.application.commands.set([]);
+        // client.application.commands.set(client.slashCommands.map(cmd => cmd));
 
         let weather = ['☀️', '🌤️', '⛅', '🌥️', '🌦️', '🌧️', '☁️', '🌩️', '⛈️', '🌨️', '💨', '🌪️', '🌫️']
 

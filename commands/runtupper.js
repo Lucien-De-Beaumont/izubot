@@ -1,4 +1,4 @@
-const fs = require('fs');
+const fetch = require("node-fetch")
 const config = require('../config')
 const db = require("../utils/connectMYSQL");
 const date = require('date-and-time');
@@ -6,31 +6,25 @@ const Logger = require("../utils/Logger");
 
 module.exports = {
     name: "runtupper",
-    roles: [config.perms['mecano']],
+    roles: [config.guild],
     description: "Insère dans la BDD toutes les données dans tupper.json",
     dmPermission: false,
     hidden: false,
-    helpType: "fun",
     async runInteraction(client, interaction) {
-        let rawdata = fs.readFileSync('tupper.json');
-        let student = JSON.parse(rawdata);
-        let req = ''
-        for (st in student) {
-            for (element in student[st]) {
-                    let name = student[st][element].name.replace(/'/, /\'/).trim()
-                    let prefix = student[st][element].brackets[0].trim()
-                    if (prefix.length == 0) {
-                        prefix = student[st][element].brackets[1].trim()
-                    }
-                    let avatar_url = student[st][element].avatar_url.trim()
-                    let created_at = student[st][element].created_at
-                    let user_id = student[st][element].user_id
+        const filter = msg => msg.author.id == interaction.member.id
+        const collector = interaction.channel.createMessageCollector({ filter, time: 120000 })
 
-                    req = (`INSERT INTO HeroicAcademy SET nom = ${db.escape(name)}, prefix = ${db.escape(prefix)}, iconURL = ${db.escape(avatar_url).trim()}, date=${db.escape(date.format(new Date(created_at), 'YYYY-MM-DD HH:mm:ss'))}, discordid=${db.escape(user_id)};`)
-
-                    await interaction.channel.send(req)
+        interaction.reply(`<@${interaction.member.id}>, merci d'envoyer le fichier obtenu via la commande "tul!export" !`)
+        collector.on('collect', async collected => {
+            if (collected.content.startsWith('https://') && collected.content.endsWith('.json') || collected.attachments.first()?.url.startsWith('https://') && collected.attachments.first()?.url.endsWith('.json')) {
+                const file = collected.attachments.first()?.url ?? collected.content
+                for (element of (JSON.parse(await (await fetch(file)).text()).tuppers)) {
+                    await db.query(`INSERT INTO HeroicAcademy SET nom = "${element.name}", prefix = "${element.brackets[0].trim()}", iconURL="${element.avatar_url}", date="${date.format(new Date(element.created_at), 'YYYY-MM-DD HH:mm:ss')}", discordid="${element.user_id}"`)
+                }
+                interaction.channel.send(`Super <@${interaction.member.id}>, c'est bon ! Tes personnages sont utilisables !`)
             }
-        }
+        })
+
     },
 
 }

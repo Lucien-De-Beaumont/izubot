@@ -17,6 +17,7 @@ module.exports = async (client) => {
     } else if (cmd.underConstruction != true) {
       return client.slashCommands.set(cmd.name, cmd)
     } else {
+      console.log(cmd.name)
       return client.commands.set(cmd.name, cmd)
     }
 
